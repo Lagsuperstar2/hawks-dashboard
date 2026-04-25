@@ -14,6 +14,9 @@ def main():
     roster_df = fetch_hawks_roster(TEAM_ID, SEASON)
     print(f"{TEAM_NAME} roster players: {len(roster_df)}")
 
+    roster_path = os.path.join(RAW_DIR, f"hawks_roster_{SEASON}.csv")
+    roster_df.to_csv(roster_path, index=False)
+
     #gamelogs
     logs_df = fetch_roster_gamelogs(roster_df, SEASON)
     print(f"Total gamelogs pulled: {len(logs_df)}")
